@@ -1,0 +1,88 @@
+{
+  "schema": "variant-mend/1",
+  "coordinateSystem": "UTF-16 code units; half-open source spans",
+  "sourceHash": "829eb5dbcb116d35aaac85b17cc0d64b2a6bcb95d764d682f59f6e83a6199791",
+  "outputHash": "64f046d0109a8bad6cdb902d3d0937517f54043b4547908fa2f932b3b4eb5f78",
+  "oldPath": "/Product/Old",
+  "newPath": "/Product/Handle",
+  "edits": [
+    {
+      "start": 211,
+      "end": 214,
+      "before": "Old",
+      "after": "Handle",
+      "kind": "declaration",
+      "context": {}
+    },
+    {
+      "start": 377,
+      "end": 389,
+      "before": "/Product/Old",
+      "after": "/Product/Handle",
+      "kind": "relationship",
+      "context": {
+        "/Product:finish": "A"
+      }
+    },
+    {
+      "start": 426,
+      "end": 445,
+      "before": "/Product/Old.weight",
+      "after": "/Product/Handle.weight",
+      "kind": "connection",
+      "context": {
+        "/Product:finish": "A"
+      }
+    },
+    {
+      "start": 480,
+      "end": 496,
+      "before": "/Product/Old/Cap",
+      "after": "/Product/Handle/Cap",
+      "kind": "relationship",
+      "context": {
+        "/Product:finish": "B"
+      }
+    },
+    {
+      "start": 555,
+      "end": 574,
+      "before": "/Product/Old.weight",
+      "after": "/Product/Handle.weight",
+      "kind": "connection",
+      "context": {
+        "/Product:finish": "B"
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "selection": {
+        "/Product:finish": "A"
+      },
+      "pathCount": 2,
+      "affectedCount": 2,
+      "missing": []
+    },
+    {
+      "selection": {
+        "/Product:finish": "B"
+      },
+      "pathCount": 3,
+      "affectedCount": 2,
+      "missing": []
+    }
+  ],
+  "limits": {
+    "bytes": 1048576,
+    "receiptBytes": 2097152,
+    "nameLength": 64,
+    "tokens": 60000,
+    "prims": 2048,
+    "depth": 24,
+    "sets": 8,
+    "branches": 16,
+    "combinations": 32
+  },
+  "validation": "Bounded structural coverage; native SDK verification is separate"
+}

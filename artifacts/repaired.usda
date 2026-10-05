@@ -1,0 +1,26 @@
+#usda 1.0
+(defaultPrim = "Product")
+def Xform "Product" (
+ prepend variantSets = "finish"
+ variants = { string finish = "A" }
+) {
+ custom string note = "/Product/Old"
+ # Keep this note: /Product/Old
+ def Scope "Handle" {
+  custom double weight = 2
+  def Scope "Cap" {}
+ }
+ def Scope "OldSpare" {
+  custom double weight = 99
+ }
+ variantSet "finish" = {
+  "A" {
+   rel accessory = </Product/Handle>
+   custom double signal.connect = </Product/Handle.weight>
+  }
+  "B" {
+   rel accessory = [</Product/Handle/Cap>, </Product/OldSpare>]
+   custom double signal.connect = </Product/Handle.weight>
+  }
+ }
+}

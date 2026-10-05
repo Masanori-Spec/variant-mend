@@ -1,0 +1,226 @@
+{
+  "schema": "variant-mend-native/1",
+  "status": "passed",
+  "sdk": {
+    "package": "usd-core",
+    "packageVersion": "26.8",
+    "usdVersion": [
+      0,
+      26,
+      8
+    ],
+    "testOnly": true
+  },
+  "inputHash": "829eb5dbcb116d35aaac85b17cc0d64b2a6bcb95d764d682f59f6e83a6199791",
+  "outputHash": "64f046d0109a8bad6cdb902d3d0937517f54043b4547908fa2f932b3b4eb5f78",
+  "openedActualExport": "/workspace/scratch/4396daea8a85/variant-mend-project/artifacts/repaired.usda",
+  "independentByteOracle": {
+    "name": "product-literal",
+    "status": "passed",
+    "editCount": 5,
+    "unchangedBytes": 516,
+    "sourceHash": "829eb5dbcb116d35aaac85b17cc0d64b2a6bcb95d764d682f59f6e83a6199791",
+    "outputHash": "64f046d0109a8bad6cdb902d3d0937517f54043b4547908fa2f932b3b4eb5f78",
+    "exactOutputBytes": true,
+    "literalSpans": true,
+    "utf16Offsets": true,
+    "kindsAndContexts": true
+  },
+  "oracleFixturesNativeSyntax": {
+    "status": "passed",
+    "caseCount": 12,
+    "textCount": 24,
+    "cases": [
+      {
+        "name": "product-literal",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "crlf-preservation",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "unicode-offsets",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "multiple-sets-escaped-strings-boundaries",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 8
+      },
+      {
+        "name": "tab-indentation",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "blank-lines",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "injected-inert-comments",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "flush-left",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "unicode-crlf",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "multiple-sets-crlf",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 8
+      },
+      {
+        "name": "shorter-destination-name",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      },
+      {
+        "name": "identifier-destination-name",
+        "sourceAndExpectedNativeValid": true,
+        "composedSelectionsChecked": 4
+      }
+    ],
+    "scope": "Independent expected-fixture syntax and resolution; actual export checked separately"
+  },
+  "defaultPrim": "/Product",
+  "authoredDefaultVariant": "A",
+  "hierarchyPreserved": true,
+  "inertStringAndCommentPreserved": true,
+  "oldSpareValue": 99.0,
+  "variants": [
+    {
+      "selection": "A",
+      "relationshipTargets": [
+        "/Product/Handle"
+      ],
+      "relationshipTargetsResolve": [
+        true
+      ],
+      "connectionPaths": [
+        "/Product/Handle.weight"
+      ],
+      "connectionTargetsResolve": [
+        true
+      ],
+      "connectionSourceValues": [
+        2.0
+      ]
+    },
+    {
+      "selection": "B",
+      "relationshipTargets": [
+        "/Product/Handle/Cap",
+        "/Product/OldSpare"
+      ],
+      "relationshipTargetsResolve": [
+        true,
+        true
+      ],
+      "connectionPaths": [
+        "/Product/Handle.weight"
+      ],
+      "connectionTargetsResolve": [
+        true
+      ],
+      "connectionSourceValues": [
+        2.0
+      ]
+    }
+  ],
+  "negativeNamespaceEditorControl": {
+    "version": [
+      0,
+      26,
+      8
+    ],
+    "canApplyEdits": true,
+    "applied": true,
+    "renamedPrimExists": true,
+    "variants": [
+      {
+        "selection": "A",
+        "relationshipTargets": [
+          "/Product/Old"
+        ],
+        "relationshipTargetsResolve": [
+          false
+        ],
+        "connectionPaths": [
+          "/Product/Old.weight"
+        ],
+        "connectionTargetsResolve": [
+          false
+        ],
+        "connectionSourceValues": [
+          null
+        ]
+      },
+      {
+        "selection": "B",
+        "relationshipTargets": [
+          "/Product/Old/Cap",
+          "/Product/OldSpare"
+        ],
+        "relationshipTargetsResolve": [
+          false,
+          true
+        ],
+        "connectionPaths": [
+          "/Product/Old.weight"
+        ],
+        "connectionTargetsResolve": [
+          false
+        ],
+        "connectionSourceValues": [
+          null
+        ]
+      }
+    ],
+    "missingTargets": [
+      {
+        "selection": "A",
+        "kind": "relationship",
+        "path": "/Product/Old"
+      },
+      {
+        "selection": "A",
+        "kind": "connection",
+        "path": "/Product/Old.weight"
+      },
+      {
+        "selection": "B",
+        "kind": "relationship",
+        "path": "/Product/Old/Cap"
+      },
+      {
+        "selection": "B",
+        "kind": "connection",
+        "path": "/Product/Old.weight"
+      }
+    ],
+    "scope": "Observed only for this fixture and pinned OpenUSD 0.26.8",
+    "warnings": "Warning: in Apply at line 1656 of /opt/USD/pxr/usd/usd/namespaceEditor.cpp -- Encountered warnings when applying namespace edit: Fixing the paths [ /Product/Old ] in the field targetPaths for the object at '/Product.accessory' would require '/Product/Old'to be relocated but we do not introduce relocates for prims that do not have opinions across composition arcs.; Fixing the paths [ /Product/Old.weight ] in the field connectionPaths for the object at '/Product.signal' would require '/Product/Old'to be relocated but we do not introduce relocates for prims that do not have opinions across composition arcs."
+  },
+  "limitations": [
+    "This verifies the supplied bounded single-layer fixture, not arbitrary USDA or all USD composition",
+    "Connection source attributes resolve to 2; this is not shader or dataflow evaluation",
+    "The negative native result is version- and fixture-specific"
+  ],
+  "sources": [
+    "https://openusd.org/release/user_guides/namespace_editing.html",
+    "https://pypi.org/project/usd-core/",
+    "https://github.com/PixarAnimationStudios/OpenUSD/blob/v26.08/LICENSE.txt"
+  ]
+}

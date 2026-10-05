@@ -1,0 +1,166 @@
+{
+  "schema": "variant-mend-oracle/1",
+  "status": "passed",
+  "caseCount": 12,
+  "cases": [
+    {
+      "name": "product-literal",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 516,
+      "sourceHash": "829eb5dbcb116d35aaac85b17cc0d64b2a6bcb95d764d682f59f6e83a6199791",
+      "outputHash": "64f046d0109a8bad6cdb902d3d0937517f54043b4547908fa2f932b3b4eb5f78",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "crlf-preservation",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 542,
+      "sourceHash": "a83d8548aa97167768d0ae4d5d87ca68118b11e460dea10a3ecdbca7f8c72b90",
+      "outputHash": "e8bd5b0d166338381ab73c338c44146c78ce075cb2c6ea93f3a63100b0ae42b7",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "unicode-offsets",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 560,
+      "sourceHash": "2dfedaacf40fb887eef8046929270c1201c4844bc3249042319afd9cfb69037f",
+      "outputHash": "7dc3f7c7a4603016903d1bd7d7aca221a41cf838f9e11103148df4f969d550f1",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "multiple-sets-escaped-strings-boundaries",
+      "status": "passed",
+      "editCount": 6,
+      "unchangedBytes": 781,
+      "sourceHash": "16c7491e99964e8c709d11cc8ddca15abfd95484fcecdb96134a575905440756",
+      "outputHash": "7ee159ef8f182b2c7a5e3801d3590ca24e5fdc5b3193874a78faee338002b329",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "tab-indentation",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 516,
+      "sourceHash": "61fc3b092b4f151a324a97c021d28f579943b877f00d7cec473298e5a8c449fb",
+      "outputHash": "abafa0e6a618e28b589b4d2c2478cad04c6384965718aa74a3ffd4564d6f7f25",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "blank-lines",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 542,
+      "sourceHash": "1704fcd5e851e0dc6f532748ade05c614eabc8f4c8607b6869cc5d594cf4586d",
+      "outputHash": "435158143829284db17e5221630efe8ce83101ffb554a58a6221e13416a8def6",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "injected-inert-comments",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 1608,
+      "sourceHash": "6a1081641b77f5f1373cadcb076f0c309b9ea33c8308db1880215e38ef3107c6",
+      "outputHash": "84f1c9382fe515f8b33e7746db5a564e8d33b27a569144b9f4f19f1e32c20ba2",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "flush-left",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 480,
+      "sourceHash": "bd30954969f17fd6f9e79f4e093240c80a65b8ff04a4876214516d06b73f11dc",
+      "outputHash": "b6c6287c76f5b170e72e81a9ab6ee6245f9daba81c8c52618cd194b095934216",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "unicode-crlf",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 587,
+      "sourceHash": "7ad65967ff056ba3988476ab8c1f617f48636efc15454c63a002878037d036bc",
+      "outputHash": "04d707518e9ac8f94d9cbb170d5cc5b7f81d79ae080b2cff697136a50e3bf2ea",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "multiple-sets-crlf",
+      "status": "passed",
+      "editCount": 6,
+      "unchangedBytes": 820,
+      "sourceHash": "731dcdd19090bc41de0b700c5053f8f0b465cd212a78780c74dfcb6d96b5814d",
+      "outputHash": "2760e1762ca160e1b5561c5e9b916c569afef80b8e12a39518538fe57c2a1cac",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "shorter-destination-name",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 516,
+      "sourceHash": "829eb5dbcb116d35aaac85b17cc0d64b2a6bcb95d764d682f59f6e83a6199791",
+      "outputHash": "ea4878b7aacd86cbd7629d3577323488a7415d51c01548edee29dad072f4b965",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    },
+    {
+      "name": "identifier-destination-name",
+      "status": "passed",
+      "editCount": 5,
+      "unchangedBytes": 516,
+      "sourceHash": "829eb5dbcb116d35aaac85b17cc0d64b2a6bcb95d764d682f59f6e83a6199791",
+      "outputHash": "81d09a6fe5f403ff7e821426b1c169f5706d684586973bd1a352efbdc520db2e",
+      "exactOutputBytes": true,
+      "literalSpans": true,
+      "utf16Offsets": true,
+      "kindsAndContexts": true
+    }
+  ],
+  "independentOfRuntime": true,
+  "oracleMutationChecks": {
+    "count": 9,
+    "rejected": [
+      "source-hash",
+      "output-hash",
+      "wrong-context",
+      "wrong-kind",
+      "wrong-span",
+      "wrong-before",
+      "wrong-after",
+      "modified-untouched-comment",
+      "split-surrogate"
+    ]
+  }
+}

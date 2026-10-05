@@ -1,0 +1,23 @@
+{
+  "name": "variant-mend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A bounded, exact-span USDA rename workbench",
+  "scripts": {
+    "test": "node --test tests/core.test.mjs tests/cli.test.mjs",
+    "oracle": "python tests/oracle.py",
+    "native": "python tests/native_verify.py",
+    "browser": "node tests/browser.mjs",
+    "serve": "python -m http.server 4173 --bind 127.0.0.1",
+    "build": "node scripts/build.mjs",
+    "check": "npm test && npm run oracle && npm run build"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
