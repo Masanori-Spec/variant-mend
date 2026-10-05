@@ -2,7 +2,7 @@
 
 ## Completed locally
 
-- 102 core/CLI behavior and rejection tests: see `artifacts/unit-test.log`
+- 106 core/CLI/test-runner behavior and rejection tests: see `artifacts/unit-test.log`
 - Independent oracle: 12 exact-edit cases plus 9 deliberate corruption rejections; see `artifacts/oracle-report.json`
 - Native USD: official usd-core 26.8, `Usd.GetVersion() == (0, 26, 8)`
 - Native-valid independent matrix: 24 source/expected texts across 56 composed selections
@@ -12,7 +12,11 @@
 
 Local execution environment: Debian 13, Node 24, Python 3.12. These are command-line and native USD checks, not a local browser pass.
 
-## Hosted gate authored, not yet run
+## Hosted gate: first run failed; correction pending
+
+The first hosted run passed 28 UI checks, including actual downloads and both 390-pixel mobile layouts, then failed the 320-pixel overflow check. Japanese screenshots also revealed missing CJK fonts on the runner. Narrow-screen stacking, test-only Noto CJK installation, 320-pixel layout diagnostics, receipt-status relocalization, and a deliberate two-page print layout with white paper and 12 mm margins are authored but still require a passing rerun.
+
+The initial remote upload omitted the core suite; the test command now requires all suite files before launching Node tests, preventing a green partial run.
 
 The Ubuntu 22.04 workflow must run sandboxed Chrome and complete:
 

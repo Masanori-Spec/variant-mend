@@ -5,7 +5,7 @@ Runtime: original HTML, CSS and JavaScript only. No third-party browser runtime 
 Test dependencies:
 - Playwright 1.62.1, fetched from the official npm registry during CI; browser executable provided by the hosted runner
 - usd-core 26.8, fetched from official PyPI during native tests, TOST-1.0
-- Node, Python and the runner's Chrome/Poppler are test tools, not redistributed parts of this app
+- Node, Python, the runner's Chrome/Poppler and Ubuntu fonts-noto-cjk are test tools, not redistributed parts of this app
 
 The explicit freeze allowlist includes only app source, built standalone app, original fixtures, original test scripts, documentation, workflow configuration, package metadata and selected generated text evidence. It excludes `node_modules`, `.git`, caches, Python environments, downloaded wheels, `pxr`, `usd_core.libs`, upstream examples, credentials, private files, and arbitrary workspace content.
 

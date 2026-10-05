@@ -44,7 +44,7 @@ USDC/USDZ; external references, payloads, sublayers, relocates, inherits/special
 
 ## Reproducible checks
 
-Node 22+ and Python 3.12 are used in CI. Runtime has no dependencies. Playwright is test-only.
+Node 22+ and Python 3.12 are used in CI. Runtime has no dependencies. Playwright is test-only. The test command fails before execution if any required suite is missing or empty. Hosted screenshots use Ubuntu’s test-only Noto CJK fonts; no font file is bundled.
 
 ```sh
 npm ci --ignore-scripts

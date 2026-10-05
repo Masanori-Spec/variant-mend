@@ -5,7 +5,7 @@
   "type": "module",
   "description": "A bounded, exact-span USDA rename workbench",
   "scripts": {
-    "test": "node --test tests/core.test.mjs tests/cli.test.mjs",
+    "test": "node scripts/test.mjs",
     "oracle": "python tests/oracle.py",
     "native": "python tests/native_verify.py",
     "browser": "node tests/browser.mjs",

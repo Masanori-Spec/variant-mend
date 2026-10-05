@@ -18,7 +18,7 @@ try{
  await page.screenshot({path:path.join(out,'desktop-ja.png'),fullPage:true});
  await page.locator('#language').click();await check('English preserves state and localizes controls',async()=>{assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.equal(await page.locator('#review').innerText(),'Review rename');assert.deepEqual(await page.locator('.stat b').allTextContents(),['5','2','2']);});
  await page.screenshot({path:path.join(out,'desktop-en.png'),fullPage:true});
- await page.pdf({path:path.join(out,'review-print.pdf'),format:'A4',printBackground:true});
+ await page.pdf({path:path.join(out,'review-print.pdf'),format:'A4',printBackground:true,preferCSSPageSize:true});
  await check('invalid rename immediately makes export stale',async()=>{await page.locator('#new-name').fill('Other');assert.equal(await page.locator('#download-usda').isDisabled(),true);assert.equal(await page.locator('#review-state').innerText(),'Review needed');});
  await check('review uses latest request after rapid edits',async()=>{await page.locator('#new-name').fill('Thing');await page.locator('#review').click();await page.locator('#new-name').fill('Handle');await page.locator('#review').click();await ready();assert.match(await page.locator('.after').first().innerText(),/Handle/);});
  await check('same-name request rejected',async()=>{await page.locator('#new-name').fill('Old');await page.locator('#review').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('REPEATED'));assert.equal(await page.locator('#download-usda').isDisabled(),true);});
@@ -40,8 +40,17 @@ try{
  await check('source picker works by keyboard with visible focus',async()=>{await page.locator('#open-file').focus();const pending=page.waitForEvent('filechooser');await page.keyboard.press('Enter');await (await pending).setFiles('fixtures/product.usda');await ready();await page.locator('#open-file').focus();assert.equal(await page.locator('#open-file').evaluate(e=>e.matches(':focus-visible')),true);const outline=await page.locator('#open-file').evaluate(e=>getComputedStyle(e).outlineWidth);assert.notEqual(outline,'0px');});
  await check('receipt picker works by keyboard',async()=>{await page.locator('.receipt-tools').evaluate(e=>e.open=true);await page.locator('#open-receipt').focus();const chooser=page.waitForEvent('filechooser');await page.keyboard.press('Enter');const dl=page.waitForEvent('download');await (await chooser).setFiles(path.join(out,'rename-receipt.json'));await (await dl).saveAs(path.join(out,'keyboard-replay.usda'));});
  await page.setViewportSize({width:390,height:844});await check('mobile English has no horizontal overflow',async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true));await page.screenshot({path:path.join(out,'mobile-en.png'),fullPage:true});
- await page.locator('#language').click();await check('mobile Japanese has no horizontal overflow',async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true));await page.screenshot({path:path.join(out,'mobile-ja.png'),fullPage:true});
- await page.setViewportSize({width:320,height:750});await check('320px narrow layout no horizontal overflow',async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true));
+ await page.locator('#language').click();await check('receipt status relocalizes when switching to Japanese',async()=>assert.match(await page.locator('#receipt-status').innerText(),/照合完了/));await check('mobile Japanese has no horizontal overflow',async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true));await page.screenshot({path:path.join(out,'mobile-ja.png'),fullPage:true});
+ await page.setViewportSize({width:320,height:750});
+ for(const language of ['ja','en']){
+  if(await page.locator('html').getAttribute('lang')!==language)await page.locator('#language').click();
+  await check(`320px ${language} narrow layout no horizontal overflow`,async()=>{
+   const layout=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,overflowing:[...document.querySelectorAll('body *')].flatMap(e=>{const r=e.getBoundingClientRect();const style=getComputedStyle(e);if(style.display==='none'||r.width===0||r.height===0)return [];if(r.right>innerWidth+.5||r.left<-.5||e.scrollWidth>e.clientWidth+1)return [{tag:e.tagName,id:e.id,classes:e.className,left:r.left,right:r.right,width:r.width,clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,text:(e.textContent||'').trim().slice(0,120)}];return [];})}));
+   await fs.writeFile(path.join(out,`mobile-320-${language}-layout.json`),JSON.stringify(layout,null,2)+'\n');
+   await page.screenshot({path:path.join(out,`mobile-320-${language}.png`),fullPage:true});
+   assert.ok(layout.documentWidth<=layout.viewport,JSON.stringify(layout,null,2));
+  });
+ }
  await page.goto('file://'+path.resolve('dist/variant-mend.html'));await ready();await check('single-file offline build runs with no requests',async()=>{await page.route('**/*',r=>r.abort());await page.locator('#reset').click();await ready();assert.equal(await page.locator('.path-row').count(),4);});
  await check('offline download is identical',async()=>{const p=page.waitForEvent('download');await page.locator('#download-usda').click();await (await p).saveAs(path.join(out,'offline-repaired.usda'));assert.deepEqual(await fs.readFile(path.join(out,'offline-repaired.usda')),await fs.readFile(path.join(out,'repaired.usda')));});
  await check('zero JavaScript runtime errors',async()=>assert.deepEqual(errors,[]));
