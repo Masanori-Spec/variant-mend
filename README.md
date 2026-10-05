@@ -58,7 +58,7 @@ python tests/native_verify.py --report artifacts/native-report.json
 
 The native SDK is fetched only for tests; it is not shipped. Its license is TOST-1.0, not unmodified Apache-2.0. See [dependency/distribution boundaries](docs/DISTRIBUTION.md).
 
-The authored Ubuntu 22.04 browser job runs sandboxed Chrome, downloads the actual three exported artifacts, applies the independent Python oracle and native USD verifier to those downloaded bytes, captures Japanese/English desktop/mobile screenshots and a print PDF, and checks interrupted, repeated, rejected and offline flows. A configured job is not evidence that it ran; see the precise status in [verification](docs/VERIFICATION.md).
+The [verified Ubuntu 22.04 run](https://github.com/Masanori-Spec/variant-mend/actions/runs/37293595284) passed all three jobs: **112 tests**, the independent oracle/native gates, and **34 sandboxed Chrome checks**. Actual browser downloads passed the byte oracle and native USD checks; true `file://` startup and the offline download passed too. Japanese/English desktop, 390px/320px mobile and two-page print evidence were reviewed. See [verification and repaired findings](docs/VERIFICATION.md) for the exact commit, environment, evidence and scope limits.
 
 ## Files
 
