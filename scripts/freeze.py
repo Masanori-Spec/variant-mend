@@ -8,7 +8,7 @@ FILES=[
  '.github/workflows/verify.yml','.gitignore','README.md','package.json','package-lock.json','index.html',
  'src/core.mjs','src/app.mjs','src/style.css','src/sample.mjs',
  'scripts/build.mjs','scripts/cli.mjs','scripts/freeze.py','scripts/test.mjs',
- 'fixtures/product.usda','tests/core.test.mjs','tests/cli.test.mjs','tests/runner.test.mjs','tests/oracle.py','tests/native_verify.py','tests/browser.mjs',
+ 'fixtures/product.usda','tests/core.test.mjs','tests/cli.test.mjs','tests/runner.test.mjs','tests/build.test.mjs','tests/oracle.py','tests/native_verify.py','tests/browser.mjs',
  'docs/RESEARCH.md','docs/VERIFICATION.md','docs/DISTRIBUTION.md',
  'dist/variant-mend.html','artifacts/repaired.usda','artifacts/rename-receipt.json',
  'artifacts/oracle-report.json','artifacts/native-report.json','artifacts/unit-test.log',

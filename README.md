@@ -68,6 +68,7 @@ The authored Ubuntu 22.04 browser job runs sandboxed Chrome, downloads the actua
 - `tests/core.test.mjs`: behavior and rejection tests
 - `tests/oracle.py`: independently authored literal edit expectations and unchanged-byte oracle
 - `tests/native_verify.py`: pinned native baseline, actual export and NamespaceEditor negative control
+- `tests/build.test.mjs`: standalone syntax, exact-dollar preservation, CSP and packaging regressions
 - `tests/browser.mjs`: actual UI download, responsive, offline and interruption checks
 - `scripts/freeze.py`: explicit distribution allowlist, deterministic ZIP and SHA-256 manifest
 
