@@ -1,0 +1,86 @@
+name: Verify VariantMend
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+permissions:
+  contents: read
+jobs:
+  core-oracle:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: mkdir -p artifacts && npm test | tee artifacts/unit-test.log
+      - run: python tests/oracle.py --report artifacts/oracle-report.json
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-oracle-and-offline-app
+          path: |
+            artifacts/
+            dist/
+  native-consumer:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install usd-core==26.8
+      - run: node scripts/cli.mjs fixtures/product.usda
+      - run: python tests/native_verify.py --report artifacts/native-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-consumer-evidence
+          path: artifacts/
+  browser-download-consumer:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: python -m pip install usd-core==26.8
+      - run: npm run build
+      - name: Sandboxed Chrome UI and actual downloads
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: |
+          test -x "$CHROMIUM_PATH"
+          python -m http.server 4173 --bind 127.0.0.1 > /tmp/variant-mend-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 40); do curl -fsS http://127.0.0.1:4173 >/dev/null && break; sleep 0.25; done
+          node tests/browser.mjs
+      - name: Independent check of downloaded bytes
+        run: python tests/oracle.py --source fixtures/product.usda --output artifacts/browser/repaired.usda --receipt artifacts/browser/rename-receipt.json --report artifacts/browser/download-oracle-report.json
+      - name: Native USD check of actual browser export
+        run: python tests/native_verify.py --output artifacts/browser/repaired.usda --receipt artifacts/browser/rename-receipt.json --report artifacts/browser/download-native-report.json
+      - name: Render print pages for pixel review
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          pdftoppm -png -r 110 artifacts/browser/review-print.pdf artifacts/browser/print-page
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-download-native-and-visual-evidence
+          path: artifacts/browser/
